@@ -1,0 +1,32 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{%  block css%}
+<link rel="stylesheet" href="{% static '/css/product.css' %}">
+{% endblock %}
+{% block nav-left %}
+        <a href="{% url 'dashboard' %}">dashboard</a>
+        <a href="{% url 'product' %}" style="color: white">Product</a>
+{% endblock %}
+
+{% block content %}
+<h2>Products</h2>
+        <div class="cakes">
+            <div class="cakeInfo">
+                <span>name</span>
+                <span>bill(in rs.)</span>
+                <span>category</span>
+                <span>tag</span>
+            </div>
+            {% for product in products %}
+            <div class="cakeInfo">
+                <span>{{ product.name }}</span>
+                <span>{{ product.price }}</span>
+                <span>{{ product.category }}</span>
+                <span>{% for tag in product.tag.all %}
+                    {{ tag }}<br>
+                    {% endfor %}
+                </span>
+            </div>
+            {% endfor %}            
+        </div>
+{% endblock %}   

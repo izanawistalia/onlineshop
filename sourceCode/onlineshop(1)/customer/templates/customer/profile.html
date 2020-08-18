@@ -1,0 +1,32 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="profile-wrapper">
+        <div class="profile">
+            <h1 align="center">Account</h1>
+            <img src="{{ user.profile_pic.url }}" alt="{{ user.name }}" class="profile_pic">
+        </div>
+        
+        <div class="information">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            {% for item in form %}
+            <div>
+                {{ item.label }} : {{ item }}
+            </div>
+            <br>
+            {% endfor %}
+            <input type="submit" class='btn'>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

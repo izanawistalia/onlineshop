@@ -1,0 +1,68 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block nav-left %}
+        <a href="{% url 'dashboard' %}">dashboard</a>
+        <a href="{% url 'product' %}">Product</a>
+    {% endblock %}
+
+<!--
+        <div class="nav-right">
+            <a href="" class="main">hello {{ request.user }}</a>
+            <a href="">logout</a>
+        </div>
+    -->
+    {% block content %}
+    <section class="cards">
+        <div class="card">
+            <div class="button">
+                <a href="" class="green">Update Customer</a>
+                <a href="{% url 'create_order' customer.id %}" class="green">Place New Order</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="head">Contact Info</div>
+            <div class="data">
+                <div>Email: <span>{{ customer.email }}</span></div>
+                <div>Phone: <span>{{ customer.phone }}</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="head">ORDERS</div>
+            <div class="data">{{ total }}</div>
+        </div>
+    </section>
+    <section class="products">
+        <section class="search">
+            <form action="" method="GET">
+                {{ myFilter.form }}
+                <input type="submit" value="search">
+            </form>
+        </section>
+        <div class="product">
+            <div class="head">Total Order</div>
+        <div class="row">
+            <span class="cell b">product</span>
+            <span class="cell b">category</span>
+            <span class="cell b">date created</span>
+            <span class="cell b">status</span>
+            <span class="cell b">update</span>
+            <span class="cell b">remove</span>
+        </div>
+        {% for order in orders %}
+        <div class="row">
+            <span class="cell">{{ order.product }}</span>
+            <span class="cell">{{ order.product.category }}</span>
+            <span class="cell">{{ order.date_created }}</span>
+            <span class="cell">{{ order.status }}</span>
+            <span class="cell"><a href="{% url 'update_order' order.id %}" class="btn-g">update</a></span>
+            <span class="cell"><a href="{% url 'delete_order' order.id %}" class="btn-r">remove</a></span>
+        </div>
+        {% endfor %}
+        
+        </div>
+    </section>
+    {% endblock %}    

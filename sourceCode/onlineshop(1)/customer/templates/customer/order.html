@@ -1,0 +1,29 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/order.css' %}">
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST">
+    <div class="head">Order</div>
+        {% csrf_token %}
+        <!--{{ formset.management_form }}
+        {% for form in formset %}
+        <div>{{ form }}</div>
+        <br>
+        {% endfor %}-->
+        {% for item in form %}
+            <div class="inp">
+                <div>
+                    {{ item.label }}
+                </div>
+            <div>
+                {{ item }}
+            </div>
+        </div>
+        {% endfor %}
+        <input type="submit" class="sub">
+</form>
+{% endblock %}

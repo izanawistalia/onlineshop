@@ -1,0 +1,89 @@
+h2{
+    font-weight: lighter;
+    font-size: 200%;
+    font-style: oblique;
+    margin: 40px;
+    text-align: center;
+    text-decoration: underline;
+}
+.cakeInfo{
+    width: 100%;
+    height: 10%;
+    padding: 40px;
+    padding-bottom: 0px;
+    font-size: 100%;
+    font-style: italic;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-bottom: 2px solid #ddd;
+}
+.cakeInfo span{
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+}
+.cake{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px #ddd;
+}
+@media(max-width: 710px){
+    h2{
+        font-size: 100%;
+    }
+    .cakeInfo{
+        font-size: 80%;
+        padding: 10px;
+    }
+    .cake{
+        width: 80px;
+        height: 80px;
+    }
+}
+@media(max-width: 550px){
+    h2{
+        font-size: 95%;
+    }
+    .cakeInfo{
+        font-size: 70%;
+        padding: 7px;
+    }
+    .cake{
+        width: 70px;
+        height: 70px;
+    }
+}
+@media(max-width: 480px){
+    h2{
+        font-size: 90%;
+    }
+    .cakeInfo{
+        font-size: 65%;
+        padding: 5px;
+    }
+    .cake{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media(max-width: 450px){
+    .cakeInfo{
+        margin: 1px;
+    }
+    .cakeInfo span{
+        padding: 5px;
+    }
+}
+@media(max-width: 380px){
+    .cakeInfo{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cakeInfo span{
+        padding: 20px;
+    }
+}

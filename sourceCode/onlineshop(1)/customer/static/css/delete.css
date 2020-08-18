@@ -1,0 +1,35 @@
+
+.container{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 70px;
+    transform: translate(-50%,-50%);
+    border: 1px solid brown;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px grey;
+}
+form{
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+form a{
+    margin: 20px;
+    text-decoration: none;
+    color: green;
+    background-color: rgba(0, 255, 0, 0.3);
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 5px green;
+}
+.but{
+    background-color: rgba(255, 0,0,0.3);
+    padding: 10px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 5px red;
+}

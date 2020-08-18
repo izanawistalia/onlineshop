@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onlineShop</title>
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="{% url 'home' %}" class="main">Cakeshop</a>
+            {%  if request.user.is_staff %}
+            <a href="{% url 'dashboard' %}">dashboard</a>
+            <a href="{% url 'product' %}">Product</a>
+            {% endif %}
+            {% for a in request.user.groups.all %}
+            {% if a.name == 'customer' %}
+            <a href="{% url 'user' %}">Dashboard</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {%  if request.user.is_authenticated %}
+        <div class="nav-right">
+            <a href="" class="main">hello {{ request.user }}</a>
+            <a href="{% url 'logout_customer' %}">logout</a>
+        </div>
+        {% else %}
+        <div class="nav-right">
+            <a href="{% url 'login_customer' %}">login</a>
+            <a href="{% url 'register_customer' %}">SignIn</a>
+        </div>
+        {% endif %}
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

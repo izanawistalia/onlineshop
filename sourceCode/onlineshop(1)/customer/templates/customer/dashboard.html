@@ -1,0 +1,72 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static '/css/dashboard.css' %}">
+    {% endblock %}
+    
+
+    {% block content %}
+    <section class="cards">
+        <div class="card">
+            <div class="head">Total Order</div>
+            <div class="data">{{ total }}</div>
+        </div>
+        <div class="card">
+            <div class="head">Orders Delivered</div>
+            <div class="data">{{ delivered }}</div>
+        </div>
+        <div class="card">
+            <div class="head">Pending Order</div>
+            <div class="data">{{ pending }}</div>
+        </div>
+    </section>
+    <section class="search">
+        <form action="" method="GET">
+            {{ myFilter.form }}
+            <input type="submit" value="search">
+        </form>
+    </section>
+    <section class="tab">
+        <div class="bar">
+            <div class="head"><a href="">Customers</a></div>
+            <div class="row">
+                <span class="cell b">id</span>
+                <span class="cell b">name</span>
+                <span class="cell b">contact</span>
+                <span class="cell b">view</span>
+            </div>
+            
+            
+            {% for customer in customers %}
+            <div class="row">
+                <span class="cell">{{ customer.id }}</span>
+                <span class="cell">{{ customer.name }}</span>
+                <span class="cell">{{ customer.phone }}</span>
+                <span class="cell"><a href="{% url 'customer' customer.id %}" class="btn-g">view</a></span>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class="bar">
+            <div class="head">Orders</div>
+            <div class="row">
+                <span class="cell b">id</span>
+                <span class="cell b">name</span>
+                <span class="cell b">view</span>
+                <span class="cell b">delete</span>
+            </div>
+            
+            {% for order in orders %}
+            <div class="row">
+                <span class="cell">{{ order.id }}</span>
+                <span class="cell">{{ order.product }}</span>
+                <span class="cell"><a href="{% url 'update_order' order.id %}" class="btn-g">update</a></span>
+                <span class="cell"><a href="{% url 'delete_order' order.id %}" class="btn-r">delete</a></span>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </section>
+    {% endblock %}
+

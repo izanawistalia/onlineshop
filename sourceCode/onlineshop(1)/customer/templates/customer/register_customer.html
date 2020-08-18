@@ -1,0 +1,30 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="container">
+        <form action="" method="POST" class="login">
+            {% csrf_token %}
+            <h2 align="center">REGISTER</h2>
+            <div class="inp">{{ form.username.label }}:  {{ form.username }}</div>
+            <div class="inp">{{ form.email.label }}:  {{ form.email }}</div>
+            <div class="inp">{{ form.password.label }}:  {{ form.password }}</div>
+            <div class="inp">Confirm password: <input type="password" name="c_password"></div>
+            
+            <input type="submit" placeholder="LOGIN" class="inp sub">
+            <br>
+            {{ form.errors }}
+            {% for message in messages %}
+            {{ message }}
+            <br>
+            {% endfor %}
+            <p>Already have an user account? <a href="{% url 'login_customer' %}">Click here..</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
